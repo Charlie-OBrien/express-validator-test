@@ -28,4 +28,6 @@ router.delete("/products/:id", deleteProduct);
 */
 //  router.get("/validproducts/:id", getProductValidation, getValidatedProduct);
 router.get("/validproducts/:id", getValidatedProduct);
+
+
 module.exports = router;

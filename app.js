@@ -4,7 +4,9 @@ const helmet = require("helmet");
 const cors = require("cors");
 const rateLimit = require("express-rate-limit");  //  PROD ONLY
 
+//  Routes
 const ProductRoutes = require("./routes/product.route");
+const UserRoutes = require("./routes/user.route");
 
 const app = express();
 
@@ -21,8 +23,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 /*  Middlewares  */
-app.use(morgan("common"));  //  logging to terminal
-app.use(helmet());  //  security focused
+//app.use(morgan("common"));  //  logging to terminal
+//app.use(helmet());  //  security focused
 app.use(cors());  //  cross-origin resource sharing
 app.use(limiter); //  limit requests PROD only
 
@@ -34,5 +36,6 @@ app.get("/", (request, response) => {
 
 
 app.use("/api", ProductRoutes);
+app.use("/api", UserRoutes);
 
 module.exports = app;
