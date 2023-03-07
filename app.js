@@ -23,8 +23,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 /*  Middlewares  */
-//app.use(morgan("common"));  //  logging to terminal
-//app.use(helmet());  //  security focused
+app.use(morgan("common"));  //  logging to terminal
+app.use(helmet());  //  security focused
 app.use(cors());  //  cross-origin resource sharing
 app.use(limiter); //  limit requests PROD only
 

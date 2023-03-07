@@ -1,4 +1,4 @@
-const { validationResult, body } = require('express-validator');
+const { validationResult } = require('express-validator');
 
 
 
@@ -31,29 +31,18 @@ const getUser = async (request, response, next) => {
 };
 
 
-// const createUser = async (request, response) => {
-//   try {
-    
-//     const user = await User.create(request.body);
-    
-//     response.status(201).json(user);
-//   } catch (error) {
-//     response.status(500).json(error);
-//   }
-// };
-
-const createUser = async (req, res) => {
+const createUser = async (requset, response) => {
     try {
-      const errors = validationResult(req);
+      const errors = validationResult(requset);
       if (!errors.isEmpty()) {
-        return res.status(422).json({ errors: errors.array() });
+        return response.status(422).json({ errors: errors.array() });
       }
   
-      const user = await User.create(req.body);
+      const user = await User.create(requset.body);
       
-      res.status(201).json(user);
+      response.status(201).json(user);
     } catch (error) {
-      res.status(500).json(error);
+      response.status(500).json(error);
     }
   };
 
