@@ -4,7 +4,9 @@ const helmet = require("helmet");
 const cors = require("cors");
 const rateLimit = require("express-rate-limit");  //  PROD ONLY
 
+//  Routes
 const ProductRoutes = require("./routes/product.route");
+const UserRoutes = require("./routes/user.route");
 
 const app = express();
 
@@ -34,5 +36,6 @@ app.get("/", (request, response) => {
 
 
 app.use("/api", ProductRoutes);
+app.use("/api", UserRoutes);
 
 module.exports = app;
